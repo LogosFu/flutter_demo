@@ -3,13 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutterdemo/bean/android_info_entity.dart';
 import 'package:flutterdemo/common/page_state.dart';
 import 'package:flutterdemo/network/network.dart';
+import 'package:flutterdemo/page/user/user_info_page.dart';
 import 'package:flutterdemo/wiget/error_page.dart';
 import 'package:flutterdemo/wiget/loading_page.dart';
 import 'package:flutterdemo/wiget/reload_handler.dart';
 
 import 'item_view.dart';
 
-class HomePage extends StatefulWidget  {
+class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -32,12 +33,14 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
         displayWidget = LoadingPage();
         break;
       case PageState.SUCCESS:
-        displayWidget = ListView.builder(
-            itemCount: _dataList.length,
-            itemBuilder: (context, index) {
-              var itemData = _dataList[index];
-              return ItemView(itemData);
-            });
+        displayWidget = Container(
+          child: ListView.builder(
+              itemCount: _dataList.length,
+              itemBuilder: (context, index) {
+                var itemData = _dataList[index];
+                return ItemView(itemData);
+              }),
+        );
         break;
       case PageState.ERROR:
         displayWidget = ErrorPage(this);
@@ -47,7 +50,11 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
         appBar: AppBar(
           title: Text("Logos App"),
         ),
-        body: displayWidget);
+        body: displayWidget,
+        floatingActionButton: FloatingActionButton(
+          onPressed: this._jumpToUserInfo,
+          child: Icon(Icons.supervised_user_circle),
+        ));
   }
 
   void _loading() {
@@ -77,5 +84,11 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
   @override
   void onReload() {
     this._loading();
+  }
+
+  _jumpToUserInfo() {
+    Navigator.push(context, new MaterialPageRoute(builder: (context) {
+      return new UserInfo();
+    }));
   }
 }
