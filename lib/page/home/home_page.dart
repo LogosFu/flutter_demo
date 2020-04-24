@@ -87,8 +87,13 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
   }
 
   _jumpToUserInfo() {
-    Navigator.push(context, new MaterialPageRoute(builder: (context) {
-      return new UserInfo();
-    }));
+    Navigator.pushNamed(context, "user_page");
+//    Navigator.push(
+//        context,
+//        new MaterialPageRoute(
+//            builder: (context) {
+//              return new UserInfo();
+//            },
+//            fullscreenDialog: true));
   }
 }

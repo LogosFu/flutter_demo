@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/page/home/home_page.dart';
+import 'package:flutterdemo/page/user/user_info_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
+      routes: {
+        "user_page": (context) => new UserInfo(),
+      },
       home: HomePage(),
     );
   }
