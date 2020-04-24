@@ -1,22 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterdemo/bean/android_info_entity.dart';
+import 'package:flutterdemo/bean/belle_info_entity.dart';
 import 'package:flutterdemo/common/page_state.dart';
 import 'package:flutterdemo/network/network.dart';
 import 'package:flutterdemo/wiget/error_page.dart';
 import 'package:flutterdemo/wiget/loading_page.dart';
 import 'package:flutterdemo/wiget/reload_handler.dart';
 
-import 'item_view.dart';
+import 'belle_item.dart';
 
-class HomePage extends StatefulWidget {
+class BellePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _BellePageState createState() => _BellePageState();
 }
 
-class _HomePageState extends State<HomePage> implements ReloadHandler {
+class _BellePageState extends State<BellePage> implements ReloadHandler {
   PageState _pageState = PageState.SUCCESS;
-  List<AndroidInfoData> _dataList = [];
+  List<BelleInfoData> _dataList = [];
   List<Widget> list = List();
 
   @override
@@ -38,7 +37,7 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
               itemCount: _dataList.length,
               itemBuilder: (context, index) {
                 var itemData = _dataList[index];
-                return ItemView(itemData);
+                return BelleItem(itemData);
               }),
         );
         break;
@@ -56,7 +55,7 @@ class _HomePageState extends State<HomePage> implements ReloadHandler {
       _pageState = PageState.LOADING;
     });
 
-    Network.getDataList()
+    Network.getBelleList()
         .then((data) => this._setData(data))
         .catchError((e) => this._getDataError(e));
   }

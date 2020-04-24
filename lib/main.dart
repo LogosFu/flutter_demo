@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/page/home/home_page.dart';
+import 'package:flutterdemo/page/main/main_page.dart';
 import 'package:flutterdemo/page/user/user_info_page.dart';
 
 void main() => runApp(MyApp());
@@ -24,8 +25,9 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         "user_page": (context) => new UserInfo(),
+        "home_page": (context) => new HomePage()
       },
-      home: HomePage(),
+      home: MainPage(),
     );
   }
 }
