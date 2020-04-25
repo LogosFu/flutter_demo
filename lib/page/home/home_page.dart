@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterdemo/bean/android_info_entity.dart';
 import 'package:flutterdemo/common/page_state.dart';
